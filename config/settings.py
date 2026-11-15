@@ -117,11 +117,11 @@ CORS_ALLOWED_ORIGINS = env_list(
 )
 
 REST_FRAMEWORK = {
-       "DEFAULT_RENDERER_CLASSES": [
-        "rest_framework.renderers.JSONRenderer",  # React fetch() gets JSON
-        # Styled "Django REST framework" page when you open the URL in a browser (local only)
-        *(["rest_framework.renderers.BrowsableAPIRenderer"] if DEBUG else []),
+    "DEFAULT_RENDERER_CLASSES": [
+        "rest_framework.renderers.JSONRenderer",
+        "rest_framework.renderers.BrowsableAPIRenderer",
     ],
+   
     "DEFAULT_AUTHENTICATION_CLASSES": [],  # public read API, so no session/CSRF needed
     "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.AllowAny"],
     "DEFAULT_THROTTLE_RATES": {"contact": "5/hour"},
