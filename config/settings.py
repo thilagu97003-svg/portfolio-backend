@@ -39,8 +39,7 @@ INSTALLED_APPS = [
     "portfolio",
 ]
 if USE_CLOUDINARY:
-    # cloudinary_storage must come before staticfiles
-    INSTALLED_APPS.insert(INSTALLED_APPS.index("django.contrib.staticfiles"), "cloudinary_storage")
+    INSTALLED_APPS.append("cloudinary_storage")
     INSTALLED_APPS.append("cloudinary")
 
 MIDDLEWARE = [
@@ -110,6 +109,7 @@ STORAGES = {
         else "whitenoise.storage.CompressedManifestStaticFilesStorage"
     },
 }
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # --- API / CORS ---
 CORS_ALLOWED_ORIGINS = env_list(
